@@ -295,6 +295,38 @@
       border-radius: 50%;
       user-select: none;
     }
+
+    .explore-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: #007BFF;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      visibility: hidden;
+    }
+
+    .explore-button.show {
+      visibility: visible;
+      animation: popIn 1.6s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      60% {
+        opacity: 1;
+        transform: translateX(-10%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
   </style>
 </head>
 <body>
@@ -345,18 +377,21 @@
     <div class="slide-text">
       <h2>Innovative, Context-Driven Architecture</h2>
       <p>Designs that blend functionality, sustainability, and aesthetics — built for the future, grounded in context.</p>
+      <button class="explore-button">EXPLORE MORE</button>
     </div>
   </div>
   <div class="home-slide" style="background-image: url('https://demo-source.imgix.net/house.jpg');">
     <div class="slide-text">
       <h2>Creative Interior Spaces</h2>
       <p>We craft environments that elevate experiences and reflect individuality with timeless elegance.</p>
+      <button class="explore-button">EXPLORE MORE</button>
     </div>
   </div>
-  <div class="home-slide" style="background-image: url('https://imgs.search.brave.com/RUL8T6bDQOyh4ZoFY01gth9YvDNMpbcY08nIhWBDyAY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zbm9v/cHkuYXJjaGRhaWx5/LmNvbS9pbWFnZXMv/YXJjaGRhaWx5L21l/ZGlhL2ltYWdlcy82/N2VmL2E5YTEvMjkz/Ni83MDAxLzg4ZDYv/YzBiNC9zbGlkZXNo/b3cvYXJjaGl0ZWN0/dXJlLW9mZmljZXMt/aW4tcG9ydG8tdGhy/b3VnaC10aGUtbGVu/cy1vZi1tYXJjLWdv/b2R3aW5fMzAuanBn/PzE3NDM3NTk4MDYm/Zm9ybWF0PXdlYnAm/d2lkdGg9NjQwJmhl/aWdodD01ODA');">
+  <div class="home-slide" style="background-image: url('https://imgs.search.brave.com/RUL8T6bDQOyh4ZoFY01gth9YvDNMpbcY08nIhWBDyAY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zbm9v/cHkuYXJjaGRhaWx5/...');">
     <div class="slide-text">
       <h2>Sustainable Urban Futures</h2>
       <p>Planning and design that align with people, places, and purpose — shaping better cities for tomorrow.</p>
+      <button class="explore-button">EXPLORE MORE</button>
     </div>
   </div>
   <div class="slide-controls">
@@ -402,7 +437,13 @@
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.remove("active");
-      if (i === index) slide.classList.add("active");
+      slide.querySelector(".explore-button").classList.remove("show");
+      if (i === index) {
+        slide.classList.add("active");
+        setTimeout(() => {
+          slide.querySelector(".explore-button").classList.add("show");
+        }, 2000);
+      }
     });
   }
 
@@ -416,7 +457,8 @@
     showSlide(slideIndex);
   }
 
-  setInterval(nextSlide, 5000);
+  showSlide(slideIndex);
+  setInterval(nextSlide, 7000);
 </script>
 
 </body>
