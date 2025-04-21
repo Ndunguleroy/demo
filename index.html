@@ -297,36 +297,54 @@
     }
 
     .explore-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 25px;
-      background-color: #007BFF;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      visibility: hidden;
-    }
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #007BFF;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: none;
+}
 
-    .explore-button.show {
-      visibility: visible;
-      animation: popIn 1.6s ease-out forwards;
-    }
+.explore-button.show {
+  animation: popIn 1.2s ease-out forwards;
+  opacity: 1;
+  transform: translateX(0%);
+}
 
-    @keyframes popIn {
-      0% {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-      60% {
-        opacity: 1;
-        transform: translateX(-10%);
-      }
-      100% {
-        transform: translateX(0%);
-      }
-    }
+.explore-button.hide {
+  animation: popOut 0.6s ease-in forwards;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
   </style>
 </head>
 <body>
@@ -387,7 +405,7 @@
       <button class="explore-button">EXPLORE MORE</button>
     </div>
   </div>
-  <div class="home-slide" style="background-image: url('https://imgs.search.brave.com/RUL8T6bDQOyh4ZoFY01gth9YvDNMpbcY08nIhWBDyAY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zbm9v/cHkuYXJjaGRhaWx5/...');">
+  <div class="home-slide" style="background-image: url('https://i.pinimg.com/736x/1b/78/fa/1b78fadec746282e0c3e4dd4ffeac35e.jpg');">
     <div class="slide-text">
       <h2>Sustainable Urban Futures</h2>
       <p>Planning and design that align with people, places, and purpose — shaping better cities for tomorrow.</p>
@@ -401,65 +419,80 @@
 </section>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('show');
-  }
-
-  function toggleDropdown(event, id) {
-    if (window.innerWidth <= 768) {
-      event.preventDefault();
-      document.querySelectorAll('.dropdown-content').forEach(drop => {
-        if (drop.id !== id) drop.classList.remove('show');
-      });
-      document.getElementById(id).classList.toggle('show');
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
     }
-  }
-
-  let lastScrollTop = 0;
-  const topBar = document.getElementById('topBar');
-  const navBar = document.getElementById('navbar');
-
-  window.addEventListener('scroll', function () {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop) {
-      topBar.classList.add('hide');
-      navBar.classList.add('move-up');
-    } else {
-      topBar.classList.remove('hide');
-      navBar.classList.remove('move-up');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  }, false);
-
-  let slideIndex = 0;
-  const slides = document.querySelectorAll(".home-slide");
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active");
-      slide.querySelector(".explore-button").classList.remove("show");
-      if (i === index) {
-        slide.classList.add("active");
-        setTimeout(() => {
-          slide.querySelector(".explore-button").classList.add("show");
-        }, 2000);
+  
+    function toggleDropdown(event, id) {
+      if (window.innerWidth <= 768) {
+        event.preventDefault();
+        document.querySelectorAll('.dropdown-content').forEach(drop => {
+          if (drop.id !== id) drop.classList.remove('show');
+        });
+        document.getElementById(id).classList.toggle('show');
       }
-    });
-  }
-
-  function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
+    }
+  
+    let lastScrollTop = 0;
+    const topBar = document.getElementById('topBar');
+    const navBar = document.getElementById('navbar');
+  
+    window.addEventListener('scroll', function () {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        topBar.classList.add('hide');
+        navBar.classList.add('move-up');
+      } else {
+        topBar.classList.remove('hide');
+        navBar.classList.remove('move-up');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+  
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".home-slide");
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        const button = slide.querySelector(".explore-button");
+        slide.classList.remove("active");
+        button.classList.remove("show");
+        button.classList.remove("hide");
+        if (i === index) {
+          slide.classList.add("active");
+          setTimeout(() => {
+            button.classList.add("show");
+          }, 1200);
+        }
+      });
+    }
+  
+    function switchSlide(index) {
+      const currentSlide = slides[slideIndex];
+      const currentButton = currentSlide.querySelector(".explore-button");
+  
+      currentButton.classList.remove("show");
+      currentButton.classList.add("hide");
+  
+      setTimeout(() => {
+        slideIndex = index;
+        showSlide(slideIndex);
+      }, 600); // Match hide animation duration
+    }
+  
+    function nextSlide() {
+      const nextIndex = (slideIndex + 1) % slides.length;
+      switchSlide(nextIndex);
+    }
+  
+    function prevSlide() {
+      const prevIndex = (slideIndex - 1 + slides.length) % slides.length;
+      switchSlide(prevIndex);
+    }
+  
     showSlide(slideIndex);
-  }
-
-  function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlide(slideIndex);
-  }
-
-  showSlide(slideIndex);
-  setInterval(nextSlide, 7000);
-</script>
+    setInterval(nextSlide, 7000);
+  </script>
 
 </body>
 </html>
