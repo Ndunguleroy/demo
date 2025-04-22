@@ -449,14 +449,44 @@
     }
 
     .philosophy-text {
-      flex: 1 1 400px;
-    }
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+}
 
     .philosophy-text p {
       font-size: 1rem;
       color: #333;
       line-height: 1.6;
     }
+
+    .view-more-button {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: auto; /* pushes the button to the right */
+  padding: 10px 16px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+  .view-more-button .arrow {
+    margin-left: 8px;
+    font-size: 1.2em;
+  }
+
+  .view-more-button:hover {
+    background-color: #333;
+  }
+
+  .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
   </style>
 </head>
 <body>
@@ -581,7 +611,7 @@
   </section>
 
 <!-- Philosophy Section -->
-  <section class="design-philosophy" id="philosophy">
+<section class="design-philosophy" id="philosophy">
     <div class="philosophy-container">
       <div class="philosophy-image">
         <img src="https://i.pinimg.com/736x/90/0e/34/900e3495dabffb92f63702aa0e2950de.jpg" alt="Design Philosophy">
@@ -591,6 +621,9 @@
         <p>
           At Wol Ruflo Studio, design is more than form — it's a response to context, culture, and climate. We believe in architecture that tells a story, serves its users, and harmonizes with the environment. Each project is approached with a thoughtful process that blends creativity with technical precision.
         </p>
+        <a href="#projects" class="view-more-button">
+          View More Projects <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
