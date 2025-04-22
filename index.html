@@ -345,24 +345,25 @@
       }
     }
 
-    /* OURWORK section */
-    #ourwork {
-      padding: 100px 20px;
-      background-color: #f9f9f9;
-      text-align: center;
-    }
+   /* OURWORK section */
+#ourwork {
+  padding: 20px 20px;
+  background-color: #f9f9f9;
+  text-align: left;
+}
 
-    #ourwork h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
+#ourwork h2 {
+  font-size: 2.5em;
+  margin: -5px 0 0 10px; /* 👈 Moves h2 up and to the right */
+  color: #333;
+}
 
-    #ourwork p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #555;
-    }
+#ourwork p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: -10px 0 0 10px; /* 👈 Moves p up and to the right */
+  color: #555;
+}
   </style>
 </head>
 <body>
@@ -437,7 +438,7 @@
 </section>
 
 <!-- OURWORK Section -->
-<section id="ourwork" style="padding: 20px 20px; background-color: #f9f9f9;">
+<section id="ourwork">
     <div style="max-width: 1000px; margin-left: 0; display: flex; align-items: center; gap: 4px;">
       
       <!-- Icon -->
@@ -446,7 +447,7 @@
         align-items: center;
         justify-content: center;
         width: 45px;
-        height: 45px;
+        height: 50px;
         background-color: #333;
         color: white;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -457,14 +458,10 @@
   
       <!-- Text Block -->
       <div style="display: flex; flex-direction: column; justify-content: center; margin: 0;">
-        <h2 style="font-size: 1.6em; margin: -2px 0 0 0; color: #333; line-height: 1.1;">
-          OURWORK
-        </h2>
-        <p style="font-size: 1em; margin: 2px 0 0; color: #555; line-height: 1.2;">
-          Architecture, Interior Design and Project Management
-        </p>
+        <h2>OURWORK</h2>
+        <p>Architecture, Interior Design and Project Management</p>
       </div>
-      
+  
     </div>
   </section>
   
