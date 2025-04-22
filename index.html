@@ -490,10 +490,34 @@
 
 /* TEAM section */
 #team {
-  padding: 20px 20px;
-  background-color: #ffffff;
+  padding: 30px 20px;
   text-align: left;
+  color: #222;
 }
+
+/* Parallax background */
+.parallax-team {
+  background-image: url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+
+/* Overlay effect (optional) */
+.parallax-team::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+
 
 #team h2 {
   font-size: 2.5em;
@@ -517,7 +541,7 @@
 }
 
 .team-card {
-  background-color: #fafafa;
+  background-color: rgba(255, 255, 255, 0);
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
@@ -687,9 +711,9 @@
     </div>
   </section>
 
-  <!-- TEAM Section -->
-<section id="team">
-    <div style="max-width: 1000px; margin-left: 0; display: flex; align-items: center; gap: 4px;">
+  <!-- TEAM Section with Parallax Background -->
+<section id="team" class="parallax-team">
+    <div style="max-width: 1000px; margin-left: 0; display: flex; align-items: center; gap: 4px; background-color: rgba(255, 255, 255, 0); padding: 10px 20px; border-radius: 10px;">
   
       <!-- Icon -->
       <span style="
