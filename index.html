@@ -487,6 +487,67 @@
   justify-content: flex-end;
   margin-top: auto;
 }
+
+/* TEAM section */
+#team {
+  padding: 20px 20px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+#team h2 {
+  font-size: 2.5em;
+  margin: -5px 0 0 10px;
+  color: #333;
+}
+
+#team p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: -10px 0 0 10px;
+  color: #555;
+}
+
+.team-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.team-card {
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 320px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.team-card h4 {
+  font-size: 1.1rem;
+  margin: 15px 0 5px;
+  color: #222;
+}
+
+.team-card p {
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0 15px 15px;
+}
   </style>
 </head>
 <body>
@@ -517,16 +578,14 @@
       </div>
     </div>
     <div class="navbar-item dropdown">
-      <a href="#" onclick="toggleDropdown(event, 'aboutDropdown')">ABOUT <span class="dropdown-arrow">▾</span></a>
+      <a href="#" onclick="toggleDropdown(event, 'aboutDropdown')">ABOUT US <span class="dropdown-arrow">▾</span></a>
       <div class="dropdown-content" id="aboutDropdown">
         <a href="#">Profile</a>
         <a href="#">Projects</a>
-        <a href="#">Team</a>
-        <a href="#">Latest News</a>
         <a href="#">Awards</a>
       </div>
     </div>
-    <div class="navbar-item"><a href="#">CONTACT</a></div>
+    <div class="navbar-item"><a href="#">CONTACT US</a></div>
     <div class="navbar-item"><a href="#">BLOG</a></div>
   </div>
 </nav>
@@ -624,6 +683,54 @@
         <a href="#projects" class="view-more-button">
           View More Projects <span class="arrow">→</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM Section -->
+<section id="team">
+    <div style="max-width: 1000px; margin-left: 0; display: flex; align-items: center; gap: 4px;">
+  
+      <!-- Icon -->
+      <span style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 50px;
+        background-color: #333;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 1.4em;
+        border-radius: 8px;
+        flex-shrink: 0;
+      ">👥</span>
+  
+      <!-- Text Block -->
+      <div style="display: flex; flex-direction: column; justify-content: center; margin: 0;">
+        <h2>OUR TEAM</h2>
+        <p>Meet the minds behind our designs and projects</p>
+      </div>
+  
+    </div>
+  
+    <div class="team-gallery">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Team Member 1">
+        <h4>Jane Doe</h4>
+        <p>Lead Architect with 10+ years of experience in sustainable design and innovation.</p>
+      </div>
+  
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Team Member 2">
+        <h4>John Smith</h4>
+        <p>Interior Designer specializing in contemporary living and spatial aesthetics.</p>
+      </div>
+  
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Team Member 3">
+        <h4>Emily Johnson</h4>
+        <p>Project Manager ensuring timely delivery and client satisfaction across all phases.</p>
       </div>
     </div>
   </section>
